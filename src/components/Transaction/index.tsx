@@ -7,11 +7,17 @@ interface TransactionProps {
     data: ITransaction
 }
 
+function BRL(value: number): string {
+    return new Intl.NumberFormat('pt-br', {
+        style: "currency", currency: 'BRL'
+    }).format(value)
+}
+
 const Transaction = ({ data }: TransactionProps) => {
     const [showValue, setShowValue] = useState<boolean>(false)
     return (
         <TouchableOpacity style={styles.container} onPress={() => setShowValue(!showValue)}>
-            <Text style={styles.date}>{data.date}</Text>
+            <Text style={styles.date}>{new Intl.DateTimeFormat('pt-br').format(data.date)}</Text>
             <View style={styles.content}>
                 <Text style={styles.label}>
                     {data.label}
@@ -24,7 +30,7 @@ const Transaction = ({ data }: TransactionProps) => {
                             from={{ translateX: 100 }}
                             animate={{ translateX: 0 }}
                             transition={{ type: 'timing', duration: 500 }}>
-                            R$ {data.type == "receita" ? data.value : `- ${data.value}`}</MotiText>
+                            {BRL(data.value)}</MotiText>
                     </AnimatePresence>
                 ) : (
                     <AnimatePresence exitBeforeEnter>
