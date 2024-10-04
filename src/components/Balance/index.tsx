@@ -17,14 +17,12 @@ const Balance = ({ balance, expense }: BalanceProps) => {
             <View style={styles.item}>
                 <Text style={styles.itemTitle}>Saldo</Text>
                 <View style={styles.content}>
-                    <Text style={styles.currencySymbol}>R$</Text>
                     <Text style={styles.balance}>{balance}</Text>
                 </View>
             </View>
             <View style={styles.item}>
                 <Text style={styles.itemTitle}>Gastos</Text>
                 <View style={styles.content}>
-                    <Text style={styles.currencySymbol}>R$</Text>
                     <Text style={styles.expense}>{expense}</Text>
                 </View>
             </View>
@@ -54,10 +52,6 @@ const styles = StyleSheet.create({
     content: {
         flexDirection: 'row',
         alignItems: 'center'
-    },
-    currencySymbol: {
-        color: '#DADADA',
-        marginRight: 6
     },
     balance: {
         fontSize: 22,
